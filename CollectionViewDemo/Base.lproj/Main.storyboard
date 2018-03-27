@@ -9,36 +9,77 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Nature Pictures-->
         <scene sceneID="XcA-pI-Zpv">
             <objects>
-                <collectionViewController id="f5Z-A9-0Du" sceneMemberID="viewController">
+                <collectionViewController id="f5Z-A9-0Du" customClass="CollectionViewController" customModule="CollectionViewDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="dk6-x4-W4c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g0q-Ft-qTx">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="g0q-Ft-qTx">
                             <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="RAc-bb-HFd">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="RAc-bb-HFd" customClass="DataItemCell" customModule="CollectionViewDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NlS-eV-bBB">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="NlS-eV-bBB" secondAttribute="trailing" id="BYj-Eb-mrR"/>
+                                    <constraint firstItem="NlS-eV-bBB" firstAttribute="leading" secondItem="RAc-bb-HFd" secondAttribute="leading" id="LsL-hm-tdk"/>
+                                    <constraint firstAttribute="bottom" secondItem="NlS-eV-bBB" secondAttribute="bottom" id="kgp-mb-naj"/>
+                                    <constraint firstItem="NlS-eV-bBB" firstAttribute="top" secondItem="RAc-bb-HFd" secondAttribute="top" id="oPs-n6-hnF"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataItemImageView" destination="NlS-eV-bBB" id="e7x-p5-sbj"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SectionHeader" id="2am-17-KLA" customClass="DataItemHeader" customModule="CollectionViewDemo" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaK-cg-yYi">
+                                    <rect key="frame" x="8" y="8" width="359" height="34"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="zaK-cg-yYi" secondAttribute="bottom" constant="8" id="JqV-Fr-iHP"/>
+                                <constraint firstItem="zaK-cg-yYi" firstAttribute="top" secondItem="2am-17-KLA" secondAttribute="top" constant="8" id="ZHC-4e-1Fq"/>
+                                <constraint firstAttribute="trailing" secondItem="zaK-cg-yYi" secondAttribute="trailing" constant="8" id="ab8-bR-zfF"/>
+                                <constraint firstItem="zaK-cg-yYi" firstAttribute="leading" secondItem="2am-17-KLA" secondAttribute="leading" constant="8" id="tP2-cW-EO9"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="titleLabel" destination="zaK-cg-yYi" id="dhn-Px-aEv"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="f5Z-A9-0Du" id="ffs-hG-wk7"/>
                             <outlet property="delegate" destination="f5Z-A9-0Du" id="9R7-Dl-JVy"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="ALc-Bx-wc3"/>
+                    <navigationItem key="navigationItem" title="Nature Pictures" id="ALc-Bx-wc3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sim-Af-xNE">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="f5Z-A9-0Du" id="rOU-1E-gAQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYj-kt-OgK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

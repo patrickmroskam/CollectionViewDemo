@@ -38,6 +38,8 @@
 		E11093E2206892C1008F42B7 /* img12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E11093C9206892C1008F42B7 /* img12.jpg */; };
 		E11093E3206892C1008F42B7 /* img07.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E11093CA206892C1008F42B7 /* img07.jpg */; };
 		E11093E52068939B008F42B7 /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11093E42068939B008F42B7 /* DataItem.swift */; };
+		E11093E72069D0C7008F42B7 /* DataItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11093E62069D0C7008F42B7 /* DataItemCell.swift */; };
+		E11093E92069E6F0008F42B7 /* DataItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11093E82069E6F0008F42B7 /* DataItemHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		E11093C9206892C1008F42B7 /* img12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img12.jpg; sourceTree = "<group>"; };
 		E11093CA206892C1008F42B7 /* img07.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img07.jpg; sourceTree = "<group>"; };
 		E11093E42068939B008F42B7 /* DataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
+		E11093E62069D0C7008F42B7 /* DataItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemCell.swift; sourceTree = "<group>"; };
+		E11093E82069E6F0008F42B7 /* DataItemHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +113,10 @@
 			children = (
 				E110939D20688C53008F42B7 /* AppDelegate.swift */,
 				E11093A120688C53008F42B7 /* Main.storyboard */,
+				E11093E82069E6F0008F42B7 /* DataItemHeader.swift */,
 				E11093AF2068928F008F42B7 /* CollectionViewController.swift */,
 				E11093E42068939B008F42B7 /* DataItem.swift */,
+				E11093E62069D0C7008F42B7 /* DataItemCell.swift */,
 				E11093A420688C53008F42B7 /* Assets.xcassets */,
 				E11093A620688C53008F42B7 /* LaunchScreen.storyboard */,
 				E11093A920688C53008F42B7 /* Info.plist */,
@@ -249,7 +255,9 @@
 			files = (
 				E11093B02068928F008F42B7 /* CollectionViewController.swift in Sources */,
 				E11093E52068939B008F42B7 /* DataItem.swift in Sources */,
+				E11093E72069D0C7008F42B7 /* DataItemCell.swift in Sources */,
 				E110939E20688C53008F42B7 /* AppDelegate.swift in Sources */,
+				E11093E92069E6F0008F42B7 /* DataItemHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

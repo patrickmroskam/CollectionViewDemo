@@ -8,9 +8,11 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+//private let reuseIdentifier = "Cell"
 
 class CollectionViewController: UICollectionViewController {
+    
+    var plantDataItems = [DataItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +21,32 @@ class CollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        
+        let width = collectionView!.frame.width / 3
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: width, height: width)
+        
+        for i in 1...12 {
+            if i > 9 {
+                plantDataItems.append(DataItem(title: "Title #\(i)", kind: Kind.Plant, imageName: "img\(i).jpg"))
+            } else {
+                plantDataItems.append(DataItem(title: "Title #0\(i)", kind: Kind.Plant, imageName: "img0\(i).jpg"))
+            }
+        }
+        
+        for i in 1...12 {
+            if i > 9 {
+                animalDataItems.append(DataItem(title: "Another Title #\(i)", kind: Kind.Animal, imageName: "anim\(i).jpg"))
+            } else {
+                animalDataItems.append(DataItem(title: "Another Title #0\(i)", kind: Kind.Animal, imageName: "anim0\(i).jpg"))
+            }
+        }
+        
+        allItems.append(plantDataItems)
+        allItems.append(animalDataItems)
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,23 +67,44 @@ class CollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return allItems.count
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return allItems[section].count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! DataItemCell
+        let dataItem = allItems[indexPath.section][indexPath.item]
+        cell.dataItem = dataItem
+        
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as! DataItemHeader
+        var title = ""
+        if let kind = Kind(rawValue: indexPath.section) {
+            title = kind.description()
+        }
+        sectionHeader.title = title
+        
+        return sectionHeader
+    }
+    
+    var animalDataItems = [DataItem]()
+    var allItems = [[DataItem]]()
+    
+    @IBAction func addButtonTapped(_ sender: AnyObject) {
+        let item = DataItem(title: "New Item", kind: .Animal, imageName: "default.jpeg")
+        let index = allItems[0].count
+        allItems[0].append(item)
+        let indexPath = IndexPath(item: index, section: 0)
+        collectionView?.insertItems(at: [indexPath])
+    }
+    
 
     // MARK: UICollectionViewDelegate
 
